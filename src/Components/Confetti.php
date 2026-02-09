@@ -10,15 +10,15 @@ class Confetti extends Component
 {
     protected string $view = 'confetti::components.confetti';
 
-    protected string | Htmlable | Closure | null $confettiPreset = null;
-    
-    protected array | Closure | null $confettiOptions = null;
-    
-    protected bool | Closure $autoFire = false;
-    
-    protected int | Closure | null $delay = null;
+    protected string|Htmlable|Closure|null $confettiPreset = null;
 
-    protected string | Closure | null $trigger = null;
+    protected array|Closure|null $confettiOptions = null;
+
+    protected bool|Closure $autoFire = false;
+
+    protected int|Closure|null $delay = null;
+
+    protected string|Closure|null $trigger = null;
 
     final public function __construct(string $name = 'confetti')
     {
@@ -33,35 +33,35 @@ class Confetti extends Component
         return $static;
     }
 
-    public function confetti(string | Closure | null $preset = null): static
+    public function confetti(string|Closure|null $preset = null): static
     {
         $this->confettiPreset = $preset;
 
         return $this;
     }
 
-    public function confettiOptions(array | Closure | null $options): static
+    public function confettiOptions(array|Closure|null $options): static
     {
         $this->confettiOptions = $options;
 
         return $this;
     }
 
-    public function autoFire(bool | Closure $condition = true): static
+    public function autoFire(bool|Closure $condition = true): static
     {
         $this->autoFire = $condition;
 
         return $this;
     }
 
-    public function delay(int | Closure $milliseconds): static
+    public function delay(int|Closure $milliseconds): static
     {
         $this->delay = $milliseconds;
 
         return $this;
     }
 
-    public function trigger(string | Closure | null $eventName): static
+    public function trigger(string|Closure|null $eventName): static
     {
         $this->trigger = $eventName;
 
@@ -81,9 +81,9 @@ class Confetti extends Component
     public function randomDirection(array $options = []): static
     {
         return $this->confettiOptions(array_merge([
-            'angle' => fn() => rand(55, 125),
-            'spread' => fn() => rand(50, 70),
-            'particleCount' => fn() => rand(50, 100),
+            'angle' => fn () => rand(55, 125),
+            'spread' => fn () => rand(50, 70),
+            'particleCount' => fn () => rand(50, 100),
             'origin' => ['y' => 0.6],
         ], $options));
     }
@@ -91,7 +91,7 @@ class Confetti extends Component
     public function fireworks(int $duration = 5000, array $options = []): static
     {
         $this->confettiPreset = 'fireworks';
-        
+
         return $this->confettiOptions(array_merge([
             'duration' => $duration,
             'startVelocity' => 30,
@@ -104,7 +104,7 @@ class Confetti extends Component
     public function snow(int $duration = 5000, array $options = []): static
     {
         $this->confettiPreset = 'snow';
-        
+
         return $this->confettiOptions(array_merge([
             'duration' => $duration,
             'particleCount' => 1,
@@ -112,7 +112,7 @@ class Confetti extends Component
             'ticks' => 200,
             'gravity' => 0.3,
             'spread' => 90,
-            'drift' => fn() => (rand(0, 1) ? 1 : -1) * 0.4,
+            'drift' => fn () => (rand(0, 1) ? 1 : -1) * 0.4,
             'scalar' => 1.2,
         ], $options));
     }
@@ -133,7 +133,7 @@ class Confetti extends Component
     public function sideCannons(int $duration = 5000, array $options = []): static
     {
         $this->confettiPreset = 'sideCannons';
-        
+
         return $this->confettiOptions(array_merge([
             'duration' => $duration,
             'particleCount' => 3,
@@ -146,14 +146,14 @@ class Confetti extends Component
     public function realistic(array $options = []): static
     {
         $this->confettiPreset = 'realistic';
-        
+
         return $this->confettiOptions($options);
     }
 
     public function school(int $duration = 3000, array $options = []): static
     {
         $this->confettiPreset = 'school';
-        
+
         return $this->confettiOptions(array_merge([
             'duration' => $duration,
         ], $options));
@@ -184,7 +184,7 @@ class Confetti extends Component
     {
         $options = $this->getConfettiOptions() ?? [];
         $options['colors'] = $colors;
-        
+
         return $this->confettiOptions($options);
     }
 
@@ -192,7 +192,7 @@ class Confetti extends Component
     {
         $options = $this->getConfettiOptions() ?? [];
         $options['particleCount'] = $count;
-        
+
         return $this->confettiOptions($options);
     }
 
@@ -200,7 +200,7 @@ class Confetti extends Component
     {
         $options = $this->getConfettiOptions() ?? [];
         $options['origin'] = $origin;
-        
+
         return $this->confettiOptions($options);
     }
 
@@ -212,8 +212,8 @@ class Confetti extends Component
     public function getConfettiOptions(): ?array
     {
         $options = $this->evaluate($this->confettiOptions);
-        
-        if (!$options) {
+
+        if (! $options) {
             return null;
         }
 

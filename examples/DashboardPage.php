@@ -2,7 +2,6 @@
 
 namespace App\Filament\Pages;
 
-use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Tapp\FilamentConfetti\Actions\ConfettiAction;
 
@@ -22,7 +21,7 @@ class Dashboard extends Page
             'options' => [
                 'particleCount' => 100,
                 'spread' => 70,
-            ]
+            ],
         ]);
     }
 

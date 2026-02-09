@@ -3,8 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Models\Achievement;
-use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -23,16 +21,16 @@ class AchievementResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-                
+
                 Tables\Columns\TextColumn::make('description')
                     ->limit(50),
-                
+
                 Tables\Columns\BadgeColumn::make('status')
                     ->colors([
                         'warning' => 'locked',
                         'success' => 'unlocked',
                     ]),
-                
+
                 Tables\Columns\TextColumn::make('unlocked_at')
                     ->dateTime()
                     ->sortable(),
@@ -51,21 +49,20 @@ class AchievementResource extends Resource
                     ->color('success')
                     ->requiresConfirmation()
                     ->modalHeading('Unlock Achievement')
-                    ->modalDescription(fn (Achievement $record) => 
-                        "Are you sure you want to unlock '{$record->title}'?"
+                    ->modalDescription(fn (Achievement $record) => "Are you sure you want to unlock '{$record->title}'?"
                     )
                     ->action(function (Achievement $record) {
                         $record->unlock();
-                        
+
                         // Fire confetti celebration
                         $this->dispatch('confetti', [
                             'preset' => 'realistic',
                             'options' => [
                                 'particleCount' => 200,
                                 'colors' => ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0'],
-                            ]
+                            ],
                         ]);
-                        
+
                         \Filament\Notifications\Notification::make()
                             ->success()
                             ->title('Achievement Unlocked! 🎉')
@@ -73,14 +70,14 @@ class AchievementResource extends Resource
                             ->send();
                     })
                     ->visible(fn (Achievement $record) => $record->status === 'locked'),
-                
+
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                    
+
                     // Bulk unlock with confetti
                     Tables\Actions\BulkAction::make('unlock')
                         ->icon('heroicon-o-trophy')
@@ -94,7 +91,7 @@ class AchievementResource extends Resource
                                     $count++;
                                 }
                             }
-                            
+
                             // Fire massive confetti celebration
                             if ($count > 0) {
                                 $this->dispatch('confetti', [
@@ -103,10 +100,10 @@ class AchievementResource extends Resource
                                         'duration' => 5000,
                                         'particleCount' => 100,
                                         'colors' => ['#FFE400', '#FFBD00', '#E89400', '#10b981'],
-                                    ]
+                                    ],
                                 ]);
                             }
-                            
+
                             \Filament\Notifications\Notification::make()
                                 ->success()
                                 ->title('Achievements Unlocked! 🎊')

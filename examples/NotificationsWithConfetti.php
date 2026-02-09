@@ -26,16 +26,16 @@ class EditProject extends EditRecord
                 ->modalDescription('Are you sure you want to mark this project as complete?')
                 ->action(function (Project $record) {
                     $record->markAsComplete();
-                    
+
                     // Fire confetti
                     $this->dispatch('confetti', [
                         'preset' => 'realistic',
                         'options' => [
                             'particleCount' => 200,
                             'colors' => ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0'],
-                        ]
+                        ],
                     ]);
-                    
+
                     // Show notification
                     Notification::make()
                         ->success()
@@ -43,12 +43,12 @@ class EditProject extends EditRecord
                         ->body("Congratulations! '{$record->name}' has been marked as complete.")
                         ->duration(5000)
                         ->send();
-                    
+
                     // Redirect to list
                     return redirect()->route('filament.admin.resources.projects.index');
                 })
-                ->visible(fn (Project $record) => !$record->is_completed),
-            
+                ->visible(fn (Project $record) => ! $record->is_completed),
+
             // Milestone celebration
             Action::make('milestone')
                 ->label('Celebrate Milestone')
@@ -61,9 +61,9 @@ class EditProject extends EditRecord
                         'options' => [
                             'duration' => 5000,
                             'colors' => ['#FFE400', '#FFBD00', '#E89400', '#FFCA6C'],
-                        ]
+                        ],
                     ]);
-                    
+
                     // Wait a bit and fire stars
                     $this->js("setTimeout(() => {
                         \$dispatch('confetti', {
@@ -74,7 +74,7 @@ class EditProject extends EditRecord
                             }
                         });
                     }, 2000)");
-                    
+
                     Notification::make()
                         ->success()
                         ->title('Milestone Reached! 🏆')
@@ -82,7 +82,7 @@ class EditProject extends EditRecord
                         ->duration(5000)
                         ->send();
                 }),
-            
+
             // Share success
             Action::make('share')
                 ->label('Share Success')
@@ -98,7 +98,7 @@ class EditProject extends EditRecord
                 ->action(function (array $data) {
                     // Share the message (implementation depends on your app)
                     // $this->shareSuccess($data['message']);
-                    
+
                     // Fire emoji confetti
                     $this->dispatch('confetti', [
                         'options' => [
@@ -106,16 +106,16 @@ class EditProject extends EditRecord
                             'particleCount' => 40,
                             'spread' => 360,
                             'scalar' => 2,
-                        ]
+                        ],
                     ]);
-                    
+
                     Notification::make()
                         ->success()
                         ->title('Success Shared! 🎊')
                         ->body('Your success has been shared with the team.')
                         ->send();
                 }),
-            
+
             // Custom celebration button
             ConfettiAction::make('celebrate')
                 ->label('Just Celebrate!')
@@ -141,7 +141,7 @@ class EditProject extends EditRecord
                 'spread' => 70,
                 'origin' => ['y' => 0.6],
                 'colors' => ['#10b981', '#3b82f6', '#8b5cf6'],
-            ]
+            ],
         ]);
     }
 
@@ -151,7 +151,7 @@ class EditProject extends EditRecord
     protected function onValidationError(\Illuminate\Validation\ValidationException $exception): void
     {
         parent::onValidationError($exception);
-        
+
         // Optional: You could add a different visual effect on errors
         // For example, a subtle shake animation instead of confetti
     }
@@ -167,9 +167,9 @@ class EditProject extends EditRecord
             'options' => [
                 'duration' => 10000,
                 'colors' => ['#ffffff', '#e0f2fe', '#bae6fd', '#7dd3fc'],
-            ]
+            ],
         ]);
-        
+
         Notification::make()
             ->info()
             ->title('Team Celebration! ❄️')
@@ -190,9 +190,9 @@ class EditProject extends EditRecord
                 'duration' => 3000,
                 'particleCount' => 5,
                 'colors' => ['#ef4444', '#f97316', '#eab308', '#84cc16'],
-            ]
+            ],
         ]);
-        
+
         Notification::make()
             ->success()
             ->title('Deadline Met! 🎯')

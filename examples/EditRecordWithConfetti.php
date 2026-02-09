@@ -15,28 +15,28 @@ class EditUser extends EditRecord
     {
         return [
             Actions\DeleteAction::make(),
-            
+
             // Basic confetti celebration
             ConfettiAction::make('celebrate')
                 ->label('Celebrate! 🎉')
                 ->basic()
                 ->particleCount(100)
                 ->colors(['#ff0000', '#00ff00', '#0000ff']),
-            
+
             // Fireworks display
             ConfettiAction::make('fireworks')
                 ->label('Launch Fireworks')
                 ->icon('heroicon-o-sparkles')
                 ->fireworks(duration: 5000)
                 ->colors(['#FFE400', '#FFBD00', '#E89400']),
-            
+
             // Stars effect
             ConfettiAction::make('stars')
                 ->label('Stars')
                 ->icon('heroicon-o-star')
                 ->stars()
                 ->particleCount(40),
-            
+
             // Emoji confetti
             ConfettiAction::make('hearts')
                 ->label('Send Hearts')
@@ -57,8 +57,8 @@ class EditUser extends EditRecord
             'preset' => 'realistic',
             'options' => [
                 'particleCount' => 150,
-                'colors' => ['#10b981', '#3b82f6', '#8b5cf6']
-            ]
+                'colors' => ['#10b981', '#3b82f6', '#8b5cf6'],
+            ],
         ]);
     }
 }

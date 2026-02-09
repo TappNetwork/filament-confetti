@@ -4,7 +4,6 @@ namespace YourVendor\FilamentConfetti\Tests;
 
 use Filament\Actions\Testing\TestsActions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\Livewire;
 use Orchestra\Testbench\TestCase as Orchestra;
 use YourVendor\FilamentConfetti\Actions\ConfettiAction;
 use YourVendor\FilamentConfetti\Components\Confetti;
@@ -172,7 +171,7 @@ class ConfettiTest extends Orchestra
             ->randomDirection();
 
         $config = $action->getConfettiConfig();
-        
+
         // Angle and spread should be evaluated from closures
         $this->assertIsInt($config['options']['angle']);
         $this->assertIsInt($config['options']['spread']);
@@ -191,7 +190,7 @@ class ConfettiTest extends Orchestra
             ->delay(500);
 
         $config = $action->getConfettiConfig();
-        
+
         $this->assertEquals(150, $config['options']['particleCount']);
         $this->assertEquals(['#ff0000', '#00ff00'], $config['options']['colors']);
         $this->assertEquals(['x' => 0.5, 'y' => 0.6], $config['options']['origin']);
@@ -209,7 +208,7 @@ class ConfettiTest extends Orchestra
             ]);
 
         $config = $action->getConfettiConfig();
-        
+
         $this->assertEquals('fireworks', $config['preset']);
         $this->assertEquals(3000, $config['options']['duration']);
         $this->assertEquals(75, $config['options']['particleCount']);
@@ -267,7 +266,7 @@ class ConfettiTest extends Orchestra
             ->confettiOptions($customOptions);
 
         $config = $action->getConfettiConfig();
-        
+
         foreach ($customOptions as $key => $value) {
             $this->assertEquals($value, $config['options'][$key]);
         }
