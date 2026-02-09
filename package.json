@@ -1,0 +1,36 @@
+{
+  "name": "filament-confetti",
+  "version": "1.0.0",
+  "description": "A Filament plugin for beautiful confetti animations using canvas-confetti",
+  "type": "module",
+  "scripts": {
+    "dev": "esbuild resources/js/confetti.js --bundle --outfile=dist/confetti.js --format=esm --minify --watch",
+    "build": "esbuild resources/js/confetti.js --bundle --outfile=dist/confetti.js --format=esm --minify"
+  },
+  "keywords": [
+    "filament",
+    "laravel",
+    "confetti",
+    "animation",
+    "celebration",
+    "canvas-confetti",
+    "php",
+    "livewire"
+  ],
+  "author": "Tapp Network",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TappNetwork/filament-confetti"
+  },
+  "bugs": {
+    "url": "https://github.com/TappNetwork/filament-confetti/issues"
+  },
+  "homepage": "https://github.com/TappNetwork/filament-confetti#readme",
+  "devDependencies": {
+    "esbuild": "^0.20.0"
+  },
+  "dependencies": {
+    "canvas-confetti": "^1.9.3"
+  }
+}
