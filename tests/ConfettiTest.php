@@ -2,7 +2,6 @@
 
 namespace YourVendor\FilamentConfetti\Tests;
 
-use Filament\Actions\Testing\TestsActions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
 use YourVendor\FilamentConfetti\Actions\ConfettiAction;
@@ -12,7 +11,6 @@ use YourVendor\FilamentConfetti\FilamentConfettiServiceProvider;
 class ConfettiTest extends Orchestra
 {
     use RefreshDatabase;
-    use TestsActions;
 
     protected function getPackageProviders($app): array
     {
