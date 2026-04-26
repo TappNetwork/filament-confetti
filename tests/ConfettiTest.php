@@ -1,12 +1,12 @@
 <?php
 
-namespace YourVendor\FilamentConfetti\Tests;
+namespace Tapp\FilamentConfetti\Tests;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
-use YourVendor\FilamentConfetti\Actions\ConfettiAction;
-use YourVendor\FilamentConfetti\Components\Confetti;
-use YourVendor\FilamentConfetti\FilamentConfettiServiceProvider;
+use Tapp\FilamentConfetti\Actions\ConfettiAction;
+use Tapp\FilamentConfetti\Components\Confetti;
+use Tapp\FilamentConfetti\FilamentConfettiServiceProvider;
 
 class ConfettiTest extends Orchestra
 {
