@@ -5,8 +5,10 @@ namespace App\Filament\Resources\ProjectResource\Pages;
 use App\Filament\Resources\ProjectResource;
 use App\Models\Project;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Validation\ValidationException;
 use Tapp\FilamentConfetti\Actions\ConfettiAction;
 
 class EditProject extends EditRecord
@@ -89,7 +91,7 @@ class EditProject extends EditRecord
                 ->icon('heroicon-o-share')
                 ->color('primary')
                 ->form([
-                    \Filament\Forms\Components\Textarea::make('message')
+                    Textarea::make('message')
                         ->label('Success Message')
                         ->placeholder('Share your success with the team...')
                         ->rows(3)
@@ -148,7 +150,7 @@ class EditProject extends EditRecord
     /**
      * Example method showing confetti on validation error prevention
      */
-    protected function onValidationError(\Illuminate\Validation\ValidationException $exception): void
+    protected function onValidationError(ValidationException $exception): void
     {
         parent::onValidationError($exception);
 

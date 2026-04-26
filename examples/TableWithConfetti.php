@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Models\Achievement;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -63,7 +64,7 @@ class AchievementResource extends Resource
                             ],
                         ]);
 
-                        \Filament\Notifications\Notification::make()
+                        Notification::make()
                             ->success()
                             ->title('Achievement Unlocked! 🎉')
                             ->body("Congratulations! You unlocked '{$record->title}'")
@@ -104,7 +105,7 @@ class AchievementResource extends Resource
                                 ]);
                             }
 
-                            \Filament\Notifications\Notification::make()
+                            Notification::make()
                                 ->success()
                                 ->title('Achievements Unlocked! 🎊')
                                 ->body("Successfully unlocked {$count} achievement(s)")
