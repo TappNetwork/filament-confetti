@@ -22,7 +22,7 @@ class Confetti extends Component
 
     final public function __construct(string $name = 'confetti')
     {
-        parent::__construct($name);
+        $this->key($name);
     }
 
     public static function make(string $name = 'confetti'): static

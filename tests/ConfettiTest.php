@@ -1,18 +1,16 @@
 <?php
 
-namespace YourVendor\FilamentConfetti\Tests;
+namespace Tapp\FilamentConfetti\Tests;
 
-use Filament\Actions\Testing\TestsActions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
-use YourVendor\FilamentConfetti\Actions\ConfettiAction;
-use YourVendor\FilamentConfetti\Components\Confetti;
-use YourVendor\FilamentConfetti\FilamentConfettiServiceProvider;
+use Tapp\FilamentConfetti\Actions\ConfettiAction;
+use Tapp\FilamentConfetti\Components\Confetti;
+use Tapp\FilamentConfetti\FilamentConfettiServiceProvider;
 
 class ConfettiTest extends Orchestra
 {
     use RefreshDatabase;
-    use TestsActions;
 
     protected function getPackageProviders($app): array
     {
