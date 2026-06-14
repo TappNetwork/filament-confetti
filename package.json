@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/TappNetwork/filament-confetti#readme",
   "devDependencies": {
-    "esbuild": "^0.28.1"
+    "esbuild": "0.28.1"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.3"
